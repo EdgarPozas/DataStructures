@@ -1,76 +1,183 @@
-# from Stack import Stack
-#
-# stack=Stack(3)
-#
-# for value in range(3):
-#     print("in ",stack.add(value))
-#
-# stack.all()
-# print("out ",stack.remove())
-# stack.all()
-# print("in ",stack.add(3))
-# stack.all()
-# print("out ",stack.remove())
-# print("out ",stack.remove())
-# print("out ",stack.remove())
-# print("out ",stack.remove())
-# stack.all()
-# print("in ",stack.add(4))
-# print("out ",stack.remove())
+from Stack import Stack
+
+stack=Stack(3)
+
+for value in range(3):
+    print("in ",stack.add(value))
+
+stack.all()
+print("out ",stack.remove())
+stack.all()
+print("in ",stack.add(3))
+stack.all()
+print("out ",stack.remove())
+print("out ",stack.remove())
+print("out ",stack.remove())
+print("out ",stack.remove())
+stack.all()
+print("in ",stack.add(4))
+print("out ",stack.remove())
 
 
-# from Tail import SimpleTail
-#
-# tail=SimpleTail(3)
-# for value in range(1,4):
-#     print("in ",tail.add(value))
-#
-# tail.all()
-# print("out ",tail.remove())
-# tail.all()
-# print("in ",tail.add(3))
-# tail.all()
-# print("out ",tail.remove())
-# print("out ",tail.remove())
-# print("out ",tail.remove())
-# print("out ",tail.remove())
-# tail.all()
-# print("in ",tail.add(4))
-# print("out ",tail.remove())
+from Queue import SimpleQueue
+
+queue=SimpleQueue(3)
+for value in range(1,4):
+    print("in ",queue.add(value))
+
+queue.all()
+print("out ",queue.remove())
+queue.all()
+print("in ",queue.add(3))
+queue.all()
+print("out ",queue.remove())
+print("out ",queue.remove())
+print("out ",queue.remove())
+print("out ",queue.remove())
+queue.all()
+print("in ",queue.add(4))
+print("out ",queue.remove())
 
 
-from Tail import CircularTail
+from Queue import CircularQueue
 
-tail=CircularTail(3)
+queue=CircularQueue(3)
 for value in range(1,5):
-    print("in ",tail.add(value))
+    print("in ",queue.add(value))
 
-tail.all()
-print("out ",tail.remove())
-tail.all()
-print("in ",tail.add(4))
-tail.all()
-print("in ",tail.add(5))
-tail.all()
-print("in ",tail.add(6))
-tail.all()
-print("in ",tail.add(7))
-tail.all()
-print("in ",tail.add(8))
-tail.all()
-print("in ",tail.add(9))
-tail.all()
-print("out ",tail.remove())
-tail.all()
-print("out ",tail.remove())
-tail.all()
-print("out ",tail.remove())
-tail.all()
-print("out ",tail.remove())
-tail.all()
-# print("out ",tail.remove())
-# print("out ",tail.remove())
-# print("out ",tail.remove())
-print("in ",tail.add(4))
-tail.all()
-# print("out ",tail.remove())
+queue.all()
+print("out ",queue.remove())
+queue.all()
+print("in ",queue.add(4))
+queue.all()
+print("in ",queue.add(5))
+queue.all()
+print("in ",queue.add(6))
+queue.all()
+print("in ",queue.add(7))
+queue.all()
+print("in ",queue.add(8))
+queue.all()
+print("in ",queue.add(9))
+queue.all()
+print("out ",queue.remove())
+queue.all()
+print("out ",queue.remove())
+queue.all()
+print("out ",queue.remove())
+queue.all()
+print("out ",queue.remove())
+queue.all()
+# print("out ",queue.remove())
+# print("out ",queue.remove())
+# print("out ",queue.remove())
+print("in ",queue.add(4))
+queue.all()
+print("out ",queue.remove())
+
+from List import SimpleList
+
+list=SimpleList()
+list.remove(0)
+for value in range(0,5):
+    print("in ",list.add(0,value))
+    print(list.toArrayValues())
+
+list.remove(1)
+print(list.toArrayValues())
+list.remove(1)
+print(list.toArrayValues())
+list.remove(1)
+print(list.toArrayValues())
+list.remove(1)
+print(list.toArrayValues())
+
+
+from List import DoubleList
+
+list=DoubleList()
+list.remove(0)
+for value in range(0,5):
+    print("in ",list.add(0,value))
+    print(list.toArrayValues())
+
+list.remove(1)
+print(list.toArrayValues())
+list.remove(1)
+print(list.toArrayValues())
+list.remove(1)
+print(list.toArrayValues())
+list.remove(1)
+print(list.toArrayValues())
+list.remove(1)
+print(list.toArrayValues())
+list.remove(1)
+print(list.toArrayValues())
+list.remove(1)
+print(list.toArrayValues())
+
+
+from Tree import BinaryTree
+
+btree=BinaryTree()
+
+base=[10,5,6,7,4,15,12,16,2]
+print("base->",base)
+for x in base:
+    print("in ",btree.add(x))
+
+print("preorder->",btree.toArrayPreOrder())
+print("inorder->",btree.toArrayInOrder())
+print("posorder->",btree.toArrayPosOrder())
+
+btree.remove(10)
+target=[10, 5, 4,2, 6,7, 15, 12, 16]
+btree.createFromArrayPre(target)
+print("---")
+print("preorder->",btree.toArrayPreOrder())
+print("inorder->",btree.toArrayInOrder())
+print("posorder->",btree.toArrayPosOrder())
+btree.remove(10)
+print("vacio->",btree.toArrayPreOrder())
+
+target=[2, 4, 7, 6, 5, 12, 16, 15, 10]
+btree.createFromArrayPos(target)
+print("---")
+print("preorder->",btree.toArrayPreOrder())
+print("inorder->",btree.toArrayInOrder())
+print("posorder->",btree.toArrayPosOrder())
+btree.remove(10)
+print("vacio->",btree.toArrayPosOrder())
+
+
+from Graph import Graph
+
+graph=Graph()
+
+n1=graph.addNode(1)
+n2=graph.addNode(2)
+n3=graph.addNode(3)
+n4=graph.addNode(4)
+n5=graph.addNode(5)
+n6=graph.addNode(6)
+n7=graph.addNode(7)
+n8=graph.addNode(8)
+
+graph.addWeight(n1,n1,1)
+graph.addWeight(n1,n2,1)
+graph.addWeight(n2,n3,2)
+graph.addWeight(n4,n5,15)
+graph.addWeight(n5,n1,6)
+graph.addWeight(n6,n2,10)
+graph.addWeight(n2,n7,2)
+graph.addWeight(n3,n8,5)
+
+print(graph.listOfAdjacency())
+graph.removeNode(2)
+print(graph.listOfAdjacency())
+graph.removeWeight(n1,3)
+
+print(graph.listOfAdjacency())
+print(graph.matrixOfAdjacency())
+
+print(graph.pathBetweenNodes(n1,n8))

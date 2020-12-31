@@ -1,4 +1,4 @@
-class SimpleTail:
+class SimpleQueue:
     def __init__(self,size):
         self.size=size
         self.head=0
@@ -24,7 +24,7 @@ class SimpleTail:
         print(self.items,"head: ",self.head,"tail: ",self.tail)
 
 
-class CircularTail:
+class CircularQueue:
     def __init__(self,size):
         self.size=size
         self.head=0
