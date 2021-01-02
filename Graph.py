@@ -53,19 +53,37 @@ class Graph:
                 arr[node.value][weight.destiny.value]= 1
         return arr
 
-    def pathBetweenNodes(self,nodeSource,nodeDestiny):
-        arr=[]
-        return self._pathBetweenNodes(nodeSource,nodeDestiny,arr)
+    def shortestPathBetweenNodes(self,nodeSource,nodeDestiny):
+        actualNode=nodeSource
+        nodesVisited=[nodeSource]
+        nodesBase=[]
+        totalWeight=0
+        _max=1000
+        while actualNode!=nodeDestiny and _max>0:
+            nodes=self._shortestPathBetweenNodesGetNearNodes(actualNode,nodesVisited,nodesBase,totalWeight)
+            actualNode=nodes[0]["node"]
+            totalWeight=nodes[0]["totalWeight"]
+            nodesVisited.append(actualNode)
+            nodesBase=nodes[1:]
+            _max-=1
+            
+        return nodesVisited
 
-    def _pathBetweenNodes(self,nodeSource,nodeDestiny,arr):
-        if nodeSource==nodeDestiny:
-            return arr
-
+    def _shortestPathBetweenNodesGetNearNodes(self,nodeSource,nodesVisited,nodesBase,totalWeight):
+        weightsNode=nodesBase
         for weight in nodeSource.weights:
-            if nodeSource==weight.destiny:
+            if nodeSource==weight.destiny or weight.destiny in nodesVisited:
                 continue
-            arr.append(weight.source.value)
-            return self._pathBetweenNodes(weight.destiny,nodeDestiny,arr)
+            weightAux=totalWeight+weight.value
+            weightsNode.append({"node":weight.destiny,"totalWeight":weightAux})
+
+        for i in range(len(weightsNode)):
+            for j in range(i,len(weightsNode)):
+                if weightsNode[i]["totalWeight"] > weightsNode[j]["totalWeight"]:
+                    weightsNode[i],weightsNode[j]=weightsNode[j],weightsNode[i]
+
+        return weightsNode
+
 
 class NodeGraph:
     def __init__(self,value):
